@@ -2,7 +2,7 @@ const express = require('express');
 const app = require('.');
 let AppConfig = {}
 
-AppConfig.port = 3000;
+AppConfig.port = 8080;
 AppConfig.allowCORSOrigin = "*";
 AppConfig.env = 'dev';
 AppConfig.db = {

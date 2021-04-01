@@ -17,8 +17,11 @@
   },
   "homepage": "https://github.com/Duvvuri1996/vocab#readme",
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.6.0",
     "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "logger": "0.0.1",
     "moment": "^2.29.1",
@@ -26,6 +29,10 @@
     "mongoose": "^5.12.2",
     "nodemon": "^2.0.7",
     "oxford-dictionaries-api": "^0.1.2",
-    "pino": "^6.11.2"
+    "pino": "^6.11.2",
+    "react-bootstrap": "^1.5.2",
+    "reactstrap": "^8.9.0",
+    "redux-thunk": "^2.3.0",
+    "util": "^0.12.3"
   }
 }

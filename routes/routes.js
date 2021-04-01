@@ -5,9 +5,9 @@ const controller = require('../controller/controller');
 module.exports.setRouter = (app) => {
     const url = `${config.apiVersion}/`
 
-    app.post(`${url}createVocab`, controller.createVocab);
+    app.post(`${url}createVocab/:wordId`, controller.createVocab);
 
-    app.post(`${url}getVocab`, controller.getVocab);
+    app.get(`${url}getVocab/:wordId`, controller.getVocab);
 
     app.get(`${url}getAll`, controller.getAll);
 

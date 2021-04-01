@@ -8,6 +8,9 @@ const app = express();
 const logger = require('./lib/logger');
 const errorHandler = require('./middlewares/errorHandler');
 const requestLog = require('./middlewares/reqLogger');
+const cors = require('cors')
+
+app.use(cors());
 
 app.all('*', function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*")
