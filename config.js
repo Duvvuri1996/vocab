@@ -6,7 +6,7 @@ AppConfig.port = 8080;
 AppConfig.allowCORSOrigin = "*";
 AppConfig.env = 'dev';
 AppConfig.db = {
-    uri : 'mongodb://127.0.0.1:27017/vocabDB'
+    uri : 'mongodb://localhost/app-vocab/vocabDB'
 }
 AppConfig.apiVersion = '/api/v1';
 AppConfig.oxford = {

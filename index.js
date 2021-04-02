@@ -46,7 +46,7 @@ app.use(errorHandler.notFoundHandler); //logs the error if requested router is n
  * create http server
  */
 const server = http.createServer(app);
-server.listen(config.port);
+server.listen(process.env.PORT || config.port);
 server.on('error', (error) => {
     if (error.syscall !== 'listen') {
         logger.error(error.code + ' is not an equal listener', 'serverOnErrorHandler', 10)

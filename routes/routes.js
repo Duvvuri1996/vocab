@@ -3,14 +3,14 @@ const config = require('../config');
 const controller = require('../controller/controller');
 
 module.exports.setRouter = (app) => {
-    const url = `${config.apiVersion}/`
+    //const url = `${config.apiVersion}/`
 
-    app.post(`${url}createVocab/:wordId`, controller.createVocab);
+    app.post(`createVocab/:wordId`, controller.createVocab);
 
-    app.get(`${url}getVocab/:wordId`, controller.getVocab);
+    app.get(`getVocab/:wordId`, controller.getVocab);
 
-    app.get(`${url}searchVocab/:wordId`, controller.searchVocab);
+    app.get(`searchVocab/:wordId`, controller.searchVocab);
 
-    app.get(`${url}getAll`, controller.getAll);
+    app.get(`getAll`, controller.getAll);
 
 }
