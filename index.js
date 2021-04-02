@@ -74,7 +74,7 @@ server.on('error', (error) => {
 
 server.on('listening', () => {
     logger.info('server listening on port' + server.address().port, 'serverOnlisteningHandler', 10);
-    let db = mongoose.connect('mongodb+srv://dbVocab:<password>@cluster0.spjtt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority' || config.db.uri, {
+    let db = mongoose.connect('mongodb+srv://dbVocab:Dhruv2017@cluster0.spjtt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority' || config.db.uri, {
         useNewUrlParser : true,
         useUnifiedTopology : true,
         useCreateIndex : true
