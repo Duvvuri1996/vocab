@@ -19,7 +19,7 @@ let getVocab = (req, res) => {
             let wordId = req.params.wordId
             wordId = wordId.toLowerCase();
             console.log(wordId)
-            vocabModel.find({ $text: { $search : wordId }}, (err, result) => {
+            vocabModel.find({ word: wordId}, (err, result) => {
                     if(err){
                         logger.error(err, 'Unknown error at getVocab() function', 10)
                         let apiResposne = response.generate(true, "Unknwon error", 404, 'Unkown error')
@@ -43,6 +43,37 @@ let getVocab = (req, res) => {
         res.send(err)
     })
 } //end of getVocab function
+
+let searchVocab = (req, res) => {
+    let vocab = () => {
+        return new Promise((resolve, reject) => {
+            let wordId = req.params.wordId
+            wordId = wordId.toLowerCase();
+            console.log(wordId)
+            vocabModel.find({ $text: { $search : wordId }}, (err, result) => {
+                    if(err){
+                        logger.error(err, 'Unknown error at getVocab() function', 10)
+                        let apiResposne = response.generate(true, "Unknwon error", 404, 'Unkown error')
+                        reject(apiResposne)
+                    }    
+                    else if(check.isEmpty(result)){
+                            logger.error('No word found', 'at getVocab() function', 5)
+                            let apiResponse = response.generate(true, "No word found", 500, 'No word found')
+                            reject(apiResponse)                         
+                        } else {
+                            resolve(result)
+                        }
+                    })
+        })
+    }
+    vocab(req, res)
+    .then((result) => {
+        let apiResponse = response.generate(false, 'Successful', 200, result)
+        res.send(apiResponse)
+    }).catch((err) => {
+        res.send(err)
+    })
+}
 
 //Create Vocab function converts given word into lowercase and will query the dictionary and caches into the database
 let createVocab =  (req, res) => {
@@ -124,5 +155,6 @@ let getAll =  (req, res) => {
 module.exports = {
     getAll : getAll,
     createVocab : createVocab,
-    getVocab : getVocab
+    getVocab : getVocab,
+    searchVocab : searchVocab
 }
