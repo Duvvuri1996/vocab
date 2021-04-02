@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const MongoClient = require('mongodb').MongoClient;
 const fs = require('fs');
 const http = require('http');
 const config = require('./config');
@@ -75,26 +74,25 @@ server.on('error', (error) => {
 
 server.on('listening', () => {
     logger.info('server listening on port' + server.address().port, 'serverOnlisteningHandler', 10);
-    let db = new MongoClient('mongodb+srv://dbVocab:Dhruv2017@cluster0.spjtt.mongodb.net/vocabDB', {
+    let db = mongoose.connect(config.db.uri, {
         useNewUrlParser : true,
         useUnifiedTopology : true,
         useCreateIndex : true
     })
-    db.connect();
 });
 
-// mongoose.connection.on('error', (error) => {
-//     logger.error(error, 'mongoose connection on error handler', 10)
-// })
+mongoose.connection.on('error', (error) => {
+    logger.error(error, 'mongoose connection on error handler', 10)
+})
 
-// mongoose.connection.on('open', (err) => {
-//     if(err) {
-//         console.log('Database error while connecting')
-//         logger.error(err, 'error at mongoose connection on open handler', 10);
-//     } else {
-//         logger.info("DB connection open", 'mongoose connection on open handler', 10)
-//     }
-// })
+mongoose.connection.on('open', (err) => {
+    if(err) {
+        console.log('Database error while connecting')
+        logger.error(err, 'error at mongoose connection on open handler', 10);
+    } else {
+        logger.info("DB connection open", 'mongoose connection on open handler', 10)
+    }
+})
 
 module.exports = app;
 
