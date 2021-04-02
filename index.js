@@ -1,5 +1,6 @@
 const express = require('express');
-const mongoose = require('mongoose');
+//const mongoose = require('mongoose');
+const MongoClient = require('mongodb').MongoClient;
 const fs = require('fs');
 const http = require('http');
 const config = require('./config');
@@ -74,11 +75,12 @@ server.on('error', (error) => {
 
 server.on('listening', () => {
     logger.info('server listening on port' + server.address().port, 'serverOnlisteningHandler', 10);
-    let db = mongoose.connect(process.env.MONGODB_URL, {
+    let db = new MongoClient(process.env.MONGODB_URL, {
         useNewUrlParser : true,
         useUnifiedTopology : true,
         useCreateIndex : true
     })
+    db.connect();
 });
 
 mongoose.connection.on('error', (error) => {
