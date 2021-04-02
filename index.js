@@ -74,7 +74,7 @@ server.on('error', (error) => {
 
 server.on('listening', () => {
     logger.info('server listening on port' + server.address().port, 'serverOnlisteningHandler', 10);
-    let db = mongoose.connect(process.env.MONGODB_URL || config.db.uri, {
+    let db = mongoose.connect(process.env.MONGODB_URL, {
         useNewUrlParser : true,
         useUnifiedTopology : true,
         useCreateIndex : true
