@@ -82,7 +82,6 @@ server.on('listening', () => {
 });
 
 mongoose.connection.on('error', (error) => {
-    console.log(err)
     logger.error(err, 'mongoose connection on error handler', 10)
 })
 
