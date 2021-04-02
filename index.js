@@ -72,9 +72,11 @@ server.on('error', (error) => {
     }
 });
 
+var uri = "mongodb+srv://dbVocab:Dhruv2017@cluster0.spjtt.mongodb.net/vocabDB"
+
 server.on('listening', () => {
     logger.info('server listening on port' + server.address().port, 'serverOnlisteningHandler', 10);
-    let db = mongoose.connect("mongodb+srv://dbVocab:Dhruv2017@cluster0.spjtt.mongodb.net/vocabDB", {
+    let db = mongoose.connect(uri, {
         useNewUrlParser : true,
         useUnifiedTopology : true,
         useCreateIndex : true
