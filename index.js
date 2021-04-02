@@ -75,7 +75,7 @@ server.on('error', (error) => {
 
 server.on('listening', () => {
     logger.info('server listening on port' + server.address().port, 'serverOnlisteningHandler', 10);
-    let db = new MongoClient(process.env.MONGODB_URL, {
+    let db = new MongoClient('mongodb+srv://dbVocab:Dhruv2017@cluster0.spjtt.mongodb.net/vocabDB', {
         useNewUrlParser : true,
         useUnifiedTopology : true,
         useCreateIndex : true
