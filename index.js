@@ -82,7 +82,7 @@ server.on('listening', () => {
 });
 
 mongoose.connection.on('error', (error) => {
-    logger.error(err, 'mongoose connection on error handler', 10)
+    logger.error(error, 'mongoose connection on error handler', 10)
 })
 
 mongoose.connection.on('open', (err) => {
