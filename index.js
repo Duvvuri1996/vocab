@@ -1,6 +1,5 @@
 const express = require('express');
-//const mongoose = require('mongoose');
-const MongoClient = require('mongodb').MongoClient;
+const mongoose = require('mongoose');
 const fs = require('fs');
 const http = require('http');
 const config = require('./config');
@@ -75,12 +74,11 @@ server.on('error', (error) => {
 
 server.on('listening', () => {
     logger.info('server listening on port' + server.address().port, 'serverOnlisteningHandler', 10);
-    let db = new MongoClient('mongodb+srv://dbVocab:Dhruv2017@cluster0.spjtt.mongodb.net/vocabDB', {
+    let db = mongoose.connect('mongodb+srv://dbVocab:Dhruv2017@cluster0.spjtt.mongodb.net/vocabDB', {
         useNewUrlParser : true,
         useUnifiedTopology : true,
         useCreateIndex : true
     })
-    db.connect();
 });
 
 mongoose.connection.on('error', (error) => {
